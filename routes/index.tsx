@@ -4,22 +4,33 @@ import { CSS } from "$gfm";
 import profile from "@/profile.json" assert { type: "json" };
 import GithubBioCard from "@/components/GithubBioCard.tsx";
 import GitIntroduction from "../components/GitIntroduction.tsx";
-import { getGithubUser, getIntroduction, Github } from "../utils/github.ts";
+import {
+  getGithubUser,
+  getIntroduction,
+  getRecentProjects,
+  Github,
+} from "../utils/github.ts";
 import SocialInfoCard from "@/components/SocialInfoCard.tsx";
 import Experiences from "../components/Experiences/Experiences.tsx";
 import Education from "../components/Education/Education.tsx";
+import Skills from "../components/Skills.tsx";
+import RecentProjects from "../components/RecentProjects/RecentProjects.tsx";
 
 interface HomePage extends Github {
   introduction: string;
+  projects: any;
 }
 
 export const handler: Handlers<HomePage> = {
   async GET(_req, ctx) {
     const user = await getGithubUser(profile.github);
     const intro = await getIntroduction(profile.github);
+    const projects = await getRecentProjects(profile.github);
+
     return ctx.render({
       ...user,
       introduction: intro,
+      projects: projects,
     });
   },
 };
@@ -40,14 +51,20 @@ export default function Page({ data }: PageProps<HomePage>) {
           <div className="col-span-2">
             <div className="grid grid-cols-1 gap-6">
               <GitIntroduction intro={data.introduction} />
+              <RecentProjects
+                username={profile.github}
+                total={data.projects.total_count}
+                projects={data.projects.items}
+              />
             </div>
           </div>
           <div className="lg:col-span-1 col-span-1">
             <div className="grid grid-cols-1 gap-6">
               <GithubBioCard {...data} />
+              <Skills skills={profile.skills} />
               <Experiences experiences={profile.experiences} />
-              <Education education={profile.education} />
               <SocialInfoCard {...data} {...profile} />
+              <Education education={profile.education} />
             </div>
           </div>
         </div>

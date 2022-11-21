@@ -1,10 +1,10 @@
-import IconBrandGithub from "https://deno.land/x/tabler_icons_tsx@0.0.1/tsx/brand-github.tsx";
-import IconBrandLinkedin from "https://deno.land/x/tabler_icons_tsx@0.0.1/tsx/brand-linkedin.tsx";
-import IconLocation from "https://deno.land/x/tabler_icons_tsx@0.0.1/tsx/location.tsx";
-import IconBuildingSkyscraper from "https://deno.land/x/tabler_icons_tsx@0.0.1/tsx/building-skyscraper.tsx";
-import IconGlobe from "https://deno.land/x/tabler_icons_tsx@0.0.1/tsx/globe.tsx";
-import IconPhoneCall from "https://deno.land/x/tabler_icons_tsx@0.0.1/tsx/phone-call.tsx";
-import IconMail from "https://deno.land/x/tabler_icons_tsx@0.0.1/tsx/mail.tsx";
+import IconBrandGithub from "https://deno.land/x/tabler_icons_tsx@0.0.2/tsx/brand-github.tsx";
+import IconBrandLinkedin from "https://deno.land/x/tabler_icons_tsx@0.0.2/tsx/brand-linkedin.tsx";
+import IconLocation from "https://deno.land/x/tabler_icons_tsx@0.0.2/tsx/location.tsx";
+import IconBuildingSkyscraper from "https://deno.land/x/tabler_icons_tsx@0.0.2/tsx/building-skyscraper.tsx";
+import IconGlobe from "https://deno.land/x/tabler_icons_tsx@0.0.2/tsx/globe.tsx";
+import IconPhoneCall from "https://deno.land/x/tabler_icons_tsx@0.0.2/tsx/phone-call.tsx";
+import IconMail from "https://deno.land/x/tabler_icons_tsx@0.0.2/tsx/mail.tsx";
 
 import ListItem from "./ListItem.tsx";
 import Card from "../layout/Card.tsx";
@@ -18,6 +18,7 @@ type SocialInfoCardProps = {
   phone?: string;
   email?: string;
 };
+
 const SocialInfoCard = (props: SocialInfoCardProps) => {
   const data: any = [
     {

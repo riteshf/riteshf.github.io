@@ -1,5 +1,4 @@
-import { asset } from "$fresh/runtime.ts";
-import Card from "../layout/Card.tsx";
+import Card from "@/layout/Card.tsx";
 
 type GithubBioCardProps = {
   avatar_url: string;

@@ -33,6 +33,20 @@ export interface Github {
   updated_at: string;
 }
 
+export interface IProject {
+  html_url: string;
+  name: string;
+  description: string;
+  stargazers_count: number;
+  forks_count: number;
+  language: string;
+}
+
+type ProjectResponse = {
+  items: IProject[];
+  total_count: number;
+};
+
 // Get Github user.
 export async function getGithubUser(username: string): Promise<Github> {
   const resp = await fetch(`https://api.github.com/users/${username}`);
@@ -46,4 +60,17 @@ export const getIntroduction = async (username: string): Promise<string> => {
   );
   const intro: string = await resp.text();
   return intro;
+};
+
+export const getRecentProjects = async (
+  username: string,
+  limit?: number,
+): Promise<ProjectResponse> => {
+  const resp = await fetch(
+    `https://api.github.com/search/repositories?q=user:${username}+fork:true&sort=updated&per_page=${
+      limit || 10
+    }&type=Repositories`,
+  );
+  const projects: ProjectResponse = await resp.json();
+  return projects;
 };
