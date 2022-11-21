@@ -9,7 +9,7 @@ import IconMail from "https://deno.land/x/tabler_icons_tsx@0.0.1/tsx/mail.tsx";
 import ListItem from "./ListItem.tsx";
 import Card from "../layout/Card.tsx";
 
-type GithubInfoCardProps = {
+type SocialInfoCardProps = {
   name: string;
   location?: string;
   company?: string;
@@ -18,7 +18,7 @@ type GithubInfoCardProps = {
   phone?: string;
   email?: string;
 };
-const GithubInfoCard = (props: GithubInfoCardProps) => {
+const SocialInfoCard = (props: SocialInfoCardProps) => {
   const data: any = [
     {
       title: "Github",
@@ -86,4 +86,4 @@ const GithubInfoCard = (props: GithubInfoCardProps) => {
   );
 };
 
-export default GithubInfoCard;
+export default SocialInfoCard;
