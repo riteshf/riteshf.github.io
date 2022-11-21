@@ -14,7 +14,7 @@ const GitIntroduction = (props: GitIntroduction) => {
       </Head>
       <Card>
         <div
-          class="p-4 markdown-body"
+          class="p-4 markdown-body "
           dangerouslySetInnerHTML={{ __html: render(props.intro) }}
         />
       </Card>

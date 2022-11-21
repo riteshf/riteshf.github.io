@@ -15,14 +15,14 @@ const Skills = ({ skills }: SkillsPros) => {
               </h5>
             </div>
             <div className="p-3 flow-root">
-              <div className="-m-1 flex flex-wrap justify-center">
+              <div className="-m-1 flex flex-wrap justify-center gap-2">
                 {skills.map((skill, index) => (
-                  <div
+                  <span
                     key={index}
-                    className="m-1 text-xs inline-flex items-center font-bold leading-sm px-3 py-1 badge-primary bg-opacity-90 rounded-full"
+                    class="bg-gray-100 text-gray-800 text-sm font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300"
                   >
                     {skill}
-                  </div>
+                  </span>
                 ))}
               </div>
             </div>

@@ -3,6 +3,7 @@ import IconStar from "https://deno.land/x/tabler_icons_tsx@0.0.2/tsx/star.tsx";
 import IconFork from "https://deno.land/x/tabler_icons_tsx@0.0.2/tsx/git-fork.tsx";
 
 import { IProject } from "@/utils/github.ts";
+import { languageColor } from "../../utils/colors.ts";
 
 const Project = ({
   html_url,
@@ -46,7 +47,9 @@ const Project = ({
           </div>
           <div>
             <span className="flex items-center">
-              <div className="w-3 h-3 rounded-full mr-1 opacity-60" // style={{ backgroundColor: languageColor(language) }}
+              <div
+                className="w-3 h-3 rounded-full mr-1 opacity-60"
+                style={{ backgroundColor: languageColor(language) }}
               />
               <span>{language}</span>
             </span>

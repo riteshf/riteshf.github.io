@@ -42,7 +42,7 @@ export interface IProject {
   language: string;
 }
 
-type ProjectResponse = {
+export type ProjectResponse = {
   items: IProject[];
   total_count: number;
 };

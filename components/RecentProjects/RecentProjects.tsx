@@ -15,7 +15,7 @@ const RecentProjects = ({ projects, username }: RecentProjects) => {
         <div className="mx-3 flex items-center justify-between mb-2">
           <h5 className="card-title">
             <span className="text-base-content opacity-70">
-              Recent FOSS Projects
+              Recent Projects
             </span>
           </h5>
           <a

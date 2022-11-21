@@ -1,11 +1,5 @@
-# fresh project
+### A Git Profile
 
-### Usage
+- Initial Reference by [arifszn](https://github.com/arifszn/gitprofile)
 
-Start the project:
-
-```
-deno task start
-```
-
-This will watch the project directory and restart as necessary.
+### Reimplemented in Fresh/Deno
