@@ -7,6 +7,7 @@ import IconPhoneCall from "https://deno.land/x/tabler_icons_tsx@0.0.1/tsx/phone-
 import IconMail from "https://deno.land/x/tabler_icons_tsx@0.0.1/tsx/mail.tsx";
 
 import ListItem from "./ListItem.tsx";
+import Card from "../layout/Card.tsx";
 
 type GithubInfoCardProps = {
   name: string;
@@ -67,7 +68,7 @@ const GithubInfoCard = (props: GithubInfoCardProps) => {
   }
   if (props.email) {
     data.push({
-      title: "email",
+      title: "Email",
       icon: <IconMail className="mr-2" />,
       value: props.email,
       link: `mailto:${props.email}`,
@@ -75,15 +76,13 @@ const GithubInfoCard = (props: GithubInfoCardProps) => {
   }
 
   return (
-    <div className="card shadow-lg compact bg-base-100">
+    <Card>
       <div className="card-body">
         <div className="text-base-content text-opacity-60">
-          {data.map((row: any) => (
-            <ListItem {...row} />
-          ))}
+          {data.map((row: any) => <ListItem {...row} />)}
         </div>
       </div>
-    </div>
+    </Card>
   );
 };
 

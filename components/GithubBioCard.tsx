@@ -1,4 +1,5 @@
 import { asset } from "$fresh/runtime.ts";
+import Card from "../layout/Card.tsx";
 
 type GithubBioCardProps = {
   avatar_url: string;
@@ -9,7 +10,7 @@ const GithubBioCard = (
   { avatar_url, name, bio }: GithubBioCardProps,
 ) => {
   return (
-    <div className="card shadow-lg compact bg-base-100">
+    <Card>
       <div className="grid place-items-center py-8">
         <div className="avatar opacity-90">
           <div
@@ -39,7 +40,7 @@ const GithubBioCard = (
           Download Resume
         </a>
       </div>
-    </div>
+    </Card>
   );
 };
 

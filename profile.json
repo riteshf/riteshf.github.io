@@ -1,0 +1,59 @@
+{
+  "github": "riteshf",
+  "linkedin": "riteshfirodiya",
+  "website": "https://riteshf.github.io",
+  "email": "firodiya.ritesh@gmail.com",
+  "skills": [
+    "Typescript",
+    "React.js",
+    "Node.js",
+    "Deno",
+    "MongoDB",
+    "PostgreSQL",
+    "Git",
+    "ReactNative",
+    "Chakra-UI",
+    "CSS",
+    "Antd",
+    "Tailwind",
+    "MUI"
+  ],
+  "experiences": [
+    {
+      "company": "Masai School",
+      "position": "SDE-3",
+      "from": "October 2021",
+      "to": "Present",
+      "companyLink": "https://masaischool.com"
+    },
+    {
+      "company": "Swiggy (Contract by Recro)",
+      "position": "Senior Software Engineer ",
+      "from": "November 2020",
+      "to": "September 2021",
+      "companyLink": "https://www.swiggy.com/"
+    },
+    {
+      "company": "Globant",
+      "position": "Senior Software  Engineer",
+      "from": "September 2019",
+      "to": "November 2020",
+      "companyLink": "https://www.globant.com/"
+    },
+    {
+      "company": "Confluxsys",
+      "position": "Software  Engineer",
+      "from": "June 2017",
+      "to": "September 2019",
+      "companyLink": "http://www.confluxsys.com/confluxsys/"
+    }
+  ],
+  "education": [
+    {
+      "institution": "P.V.G. College of Engineering and Technology",
+      "degree": "Bachelor in Computer Engineering",
+      "from": "2013",
+      "to": "2017"
+    }
+  ]
+}
