@@ -11,6 +11,7 @@ import Card from "../layout/Card.tsx";
 
 type SocialInfoCardProps = {
   name: string;
+  github: string;
   location?: string;
   company?: string;
   linkedin?: string;
@@ -24,8 +25,8 @@ const SocialInfoCard = (props: SocialInfoCardProps) => {
     {
       title: "Github",
       icon: <IconBrandGithub className="mr-2" />,
-      value: props.name,
-      link: `https://github.com/${props.name}`,
+      value: props.github,
+      link: `https://github.com/${props.github}`,
     },
   ];
 

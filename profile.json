@@ -2,7 +2,7 @@
   "title": "Ritesh Portfolio",
   "github": "riteshf",
   "linkedin": "riteshfirodiya",
-  "website": "https://riteshf.github.io",
+  "website": "https://riteshf.deno.dev/",
   "email": "firodiya.ritesh@gmail.com",
   "skills": [
     "Typescript",
@@ -55,6 +55,12 @@
       "degree": "Bachelor in Computer Engineering",
       "from": "2013",
       "to": "2017"
+    },
+    {
+      "institution": "Vishwakarma Institue of Technology",
+      "degree": "Higher Secondary School",
+      "from": "2011",
+      "to": "2013"
     }
   ]
 }

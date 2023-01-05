@@ -10,7 +10,7 @@ const GithubBioCard = (
 ) => {
   return (
     <Card>
-      <div className="grid place-items-center py-8">
+      <div className="grid place-items-center py-4">
         <div className="avatar opacity-90">
           <div
             className={"mb-8 rounded-full w-32 h-32 ring ring-primary ring-offset-base-100 ring-offset-2"}
