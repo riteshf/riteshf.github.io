@@ -3,7 +3,6 @@ import { Handlers, PageProps } from "$fresh/server.ts";
 import { CSS } from "$gfm";
 
 import GithubBioCard from "@/components/GithubBioCard.tsx";
-import GitIntroduction from "@/components/GitIntroduction.tsx";
 import SocialInfoCard from "@/components/SocialInfoCard.tsx";
 import Experiences from "../components/Experiences/Experiences.tsx";
 import Education from "../components/Education/Education.tsx";
@@ -12,7 +11,6 @@ import RecentProjects from "../components/RecentProjects/RecentProjects.tsx";
 
 import {
   getGithubUser,
-  getIntroduction,
   getRecentProjects,
   Github,
   ProjectResponse,
@@ -46,7 +44,7 @@ export default function Page({ data }: PageProps<HomePage>) {
         <title>{profile.title}</title>
         <style dangerouslySetInnerHTML={{ __html: CSS }} />
       </Head>
-      <main className="p-4 lg:p-10 bg-gray-300">
+      <main className="p-4 lg:p-10 bg-black-300">
         <div className="gap-6 rounded-box">
           <div className="col-span-1">
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
