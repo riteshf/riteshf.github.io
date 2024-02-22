@@ -6,25 +6,63 @@
   "email": "firodiya.ritesh@gmail.com",
   "skills": [
     "Typescript",
+    "NextJS",
     "React.js",
+    "Javascript",
     "Node.js",
     "Deno",
+    "GraphQL",
+    "REST API",
     "MongoDB",
     "PostgreSQL",
     "Git",
-    "ReactNative",
-    "Chakra-UI",
     "CSS",
     "Antd",
     "Tailwind",
-    "MUI"
+    "MUI",
+    "Chakra-UI"
   ],
   "experiences": [
     {
-      "company": "Masai School",
+      "id": 6,
+      "company": "ManifestIT",
+      "position": "Senior Frontend Engineer",
+      "from": "October 2023",
+      "to": "Present",
+      "companyLink": ""
+    },
+    {
+      "id": 5,
+      "company": "Speechify",
+      "position": "Platform Engineer",
+      "from": "May 2023",
+      "to": "August 2023",
+      "companyLink": "https://speechify.com",
+      "projects": [
+        {
+          "id": 1,
+          "name": "Speechify SDK",
+          "description": "An Multiplatform SDK used commonly across Speechify to provide TTS(text-to-speech) and related services.",
+          "role": "Kothlin Developer",
+          "roleDescription": "Build and develop TTS functionality to support multiple platform",
+          "technologies": [6, 10, 12]
+        },
+        {
+          "id": 2,
+          "name": "Dubbing Studio",
+          "description": "A Video Dubbing Platform useful for translating Audio for Video",
+          "role": "Full Stack Developer",
+          "roleDescription": "Develop API's and Svelte Components to provide an seemless experience while dubbing Video",
+          "technologies": [4, 7, 9, 14, 1, 2, 10, 12]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "company": "Masai",
       "position": "SDE-3",
       "from": "October 2021",
-      "to": "Present",
+      "to": "May 2023",
       "companyLink": "https://masaischool.com"
     },
     {

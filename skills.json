@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "Typescript",
+    "link": "https://www.typescriptlang.org/"
+  },
+  { "id": 2, "name": "NextJS", "link": "https://nextjs.org/" },
+  { "id": 3, "name": "Node", "link": "https://nodejs.org/en" },
+  { "id": 4, "name": "GraphQL" },
+  { "id": 5, "name": "PostgreSQL" },
+  { "id": 6, "name": "React", "link": "https://react.dev/" },
+  { "id": 7, "name": "MonogDB" },
+  { "id": 8, "name": "AWS", "fullName": "Amazon Web Services" },
+  { "id": 9, "name": "GCP", "fullName": "Google Cloud Platform" },
+  { "id": 10, "name": "Javascript", "link": "https://tc39.es/ecma262/" },
+  { "id": 11, "name": "HTML", "fullName": "Hyper-text Markup Language" },
+  { "id": 12, "name": "CSS", "fullName": "Cascading Style Sheets" }
+]

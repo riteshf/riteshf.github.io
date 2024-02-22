@@ -1,21 +1,21 @@
-import { Head } from "$fresh/runtime.ts";
-import { Handlers, PageProps } from "$fresh/server.ts";
-import { CSS } from "$gfm";
+import { Head } from '$fresh/runtime.ts';
+import { Handlers, PageProps } from '$fresh/server.ts';
+import { CSS } from '$gfm';
 
-import GithubBioCard from "@/components/GithubBioCard.tsx";
-import SocialInfoCard from "@/components/SocialInfoCard.tsx";
-import Experiences from "../components/Experiences/Experiences.tsx";
-import Education from "../components/Education/Education.tsx";
-import Skills from "../components/Skills.tsx";
-import RecentProjects from "../components/RecentProjects/RecentProjects.tsx";
+import GithubBioCard from '@/components/GithubBioCard.tsx';
+import SocialInfoCard from '@/components/SocialInfoCard.tsx';
+import Experiences from '../components/Experiences/Experiences.tsx';
+import Education from '../components/Education/Education.tsx';
+import Skills from '../components/Skills.tsx';
+import RecentProjects from '../components/RecentProjects/RecentProjects.tsx';
 
 import {
   getGithubUser,
   getRecentProjects,
   Github,
   ProjectResponse,
-} from "../utils/github.ts";
-import profile from "@/profile.json" assert { type: "json" };
+} from '../utils/github.ts';
+import profile from '@/profile.json' assert { type: 'json' };
 
 interface HomePage extends Github {
   projects: ProjectResponse;
@@ -49,11 +49,12 @@ export default function Page({ data }: PageProps<HomePage>) {
           <div className="col-span-1">
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
               <GithubBioCard {...data} />
+              <Experiences experiences={profile.experiences} />
               <div className="grid grid-rows-2 gap-6">
                 <Skills skills={profile.skills} />
                 <Education education={profile.education} />
               </div>
-              <Experiences experiences={profile.experiences} />
+
               <SocialInfoCard {...data} {...profile} />
             </div>
           </div>
