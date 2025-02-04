@@ -24,11 +24,19 @@
   ],
   "experiences": [
     {
+      "id": 7,
+      "company": "TopLegal",
+      "position": "Tech Lead and Full Stack Engineer",
+      "from": "July 2024",
+      "to": "January 2025",
+      "companyLink": ""
+    },
+    {
       "id": 6,
       "company": "ManifestIT",
       "position": "Senior Frontend Engineer",
       "from": "October 2023",
-      "to": "Present",
+      "to": "May 2024",
       "companyLink": ""
     },
     {

@@ -1,4 +1,4 @@
-### [DEMO Link](https://riteshf.deno.dev/)
+### [Website](https://riteshf.deno.dev/)
 
 Create your live auto-update portfolio by fetching latest information from
 github.
