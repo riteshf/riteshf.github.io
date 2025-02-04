@@ -43,6 +43,7 @@ export default function Page({ data }: PageProps<HomePage>) {
       <Head>
         <title>{profile.title}</title>
         <style dangerouslySetInnerHTML={{ __html: CSS }} />
+        <meta name="google-site-verification" content="BBtnEWW-NzqBZtR7EfTb1C5aw41RsghkZR2yeYFtT2I" />
       </Head>
       <main className="p-4 lg:p-10 bg-black-300">
         <div className="gap-6 rounded-box">
