@@ -22,7 +22,7 @@ const Sidebar = (
   { name, headline, tagline, github, linkedin, email, location }: SidebarProps,
 ) => {
   return (
-    <aside class="lg:sticky lg:top-0 lg:max-h-screen lg:h-screen lg:py-24 lg:w-1/2 py-12 flex flex-col justify-between">
+    <aside class="lg:sticky lg:top-0 lg:max-h-screen lg:h-screen lg:py-24 lg:w-2/5 py-12 flex flex-col justify-between">
       <div>
         <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-slate-lightest leading-tight">
           {name}

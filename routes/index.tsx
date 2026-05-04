@@ -54,7 +54,7 @@ export default function Page() {
         />
       </Head>
       <main class="min-h-screen bg-navy text-slate font-sans">
-        <div class="max-w-screen-xl mx-auto px-6 sm:px-12 lg:px-24 lg:flex lg:gap-16">
+        <div class="max-w-screen-xl mx-auto px-6 sm:px-12 lg:px-16 lg:flex lg:gap-12">
           <Sidebar
             name={profile.name}
             headline={profile.headline}
@@ -65,7 +65,7 @@ export default function Page() {
             location={profile.location}
           />
 
-          <div class="lg:w-1/2 lg:py-24 pt-4 pb-24">
+          <div class="lg:w-3/5 lg:py-24 pt-4 pb-24">
             <About paragraphs={profile.about} currently={profile.currently} />
             <Experience experiences={profile.experiences} />
             <Projects projects={profile.projects} contactEmail={profile.email} />
