@@ -1,35 +1,42 @@
-type SkillsPros = {
-  skills: string[];
+import Section from "@/layout/Section.tsx";
+
+type SkillsMap = Record<string, string[]>;
+
+type SkillsProps = {
+  skills: SkillsMap | string[];
 };
-const Skills = ({ skills }: SkillsPros) => {
+
+const toGroups = (skills: SkillsMap | string[]): SkillsMap => {
+  if (Array.isArray(skills)) return { Skills: skills };
+  return skills;
+};
+
+const Skills = ({ skills }: SkillsProps) => {
+  const groups = toGroups(skills);
+  if (!Object.keys(groups).length) return null;
+
   return (
-    <>
-      {skills?.length !== 0 && (
-        <div className="card shadow-lg compact bg-base-100">
-          <div className="card-body">
-            <div className="mx-3">
-              <h5 className="card-title">
-                <span className="text-base-content opacity-70">
-                  Tech Stack
-                </span>
-              </h5>
+    <Section title="Tech stack">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-5">
+        {Object.entries(groups).map(([group, items]) => (
+          <div key={group}>
+            <div class="text-xs font-semibold uppercase tracking-wider text-ink-500 mb-2">
+              {group}
             </div>
-            <div className="p-3 flow-root">
-              <div className="-m-1 flex flex-wrap justify-center gap-2">
-                {skills.map((skill, index) => (
-                  <span
-                    key={index}
-                    class="bg-gray-100 text-gray-800 text-sm font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
+            <div class="flex flex-wrap gap-1.5">
+              {items.map((item, i) => (
+                <span
+                  key={i}
+                  class="text-xs font-mono px-2 py-1 rounded-md bg-ink-50 border border-ink-100 text-ink-700"
+                >
+                  {item}
+                </span>
+              ))}
             </div>
           </div>
-        </div>
-      )}
-    </>
+        ))}
+      </div>
+    </Section>
   );
 };
 

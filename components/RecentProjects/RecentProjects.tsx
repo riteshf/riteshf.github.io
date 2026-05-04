@@ -1,39 +1,35 @@
-import Card from "@/layout/Card.tsx";
+import Section from "@/layout/Section.tsx";
 import Project from "./Project.tsx";
 import { IProject } from "@/utils/github.ts";
 
-type RecentProjects = {
+type RecentProjectsProps = {
   username: string;
   total: number;
   projects: IProject[];
 };
 
-const RecentProjects = ({ projects, username }: RecentProjects) => {
+const RecentProjects = (
+  { projects, username, total }: RecentProjectsProps,
+) => {
   return (
-    <Card>
-      <div className="p-4 card-body">
-        <div className="mx-3 flex items-center justify-between mb-2">
-          <h5 className="card-title">
-            <span className="text-base-content opacity-70">
-              Recent Projects
-            </span>
-          </h5>
-          <a
-            href={`https://github.com/${username}?tab=repositories`}
-            target="_blank"
-            rel="noreferrer"
-            className="text-base-content opacity-50"
-          >
-            See All
-          </a>
-        </div>
-        <div className="col-span-2">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {projects.map((item, index) => <Project key={index} {...item} />)}
-          </div>
-        </div>
+    <Section
+      title="Recent public repositories"
+      meta={`${total} total`}
+    >
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+        {projects.map((p, i) => <Project key={i} {...p} />)}
       </div>
-    </Card>
+      <div class="mt-4 text-right">
+        <a
+          href={`https://github.com/${username}?tab=repositories`}
+          target="_blank"
+          rel="noreferrer"
+          class="text-sm text-ink-500 hover:text-accent-700"
+        >
+          View all on GitHub →
+        </a>
+      </div>
+    </Section>
   );
 };
 

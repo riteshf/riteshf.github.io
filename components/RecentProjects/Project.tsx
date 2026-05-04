@@ -1,9 +1,8 @@
-import IconFolder from "https://deno.land/x/tabler_icons_tsx@0.0.2/tsx/folder.tsx";
 import IconStar from "https://deno.land/x/tabler_icons_tsx@0.0.2/tsx/star.tsx";
 import IconFork from "https://deno.land/x/tabler_icons_tsx@0.0.2/tsx/git-fork.tsx";
 
 import { IProject } from "@/utils/github.ts";
-import { languageColor } from "../../utils/colors.ts";
+import { languageColor } from "@/utils/colors.ts";
 
 const Project = ({
   html_url,
@@ -15,45 +14,40 @@ const Project = ({
 }: IProject) => {
   return (
     <a
-      className="card shadow-lg compact bg-base-100 cursor-pointer"
       href={html_url}
       target="_blank"
       rel="noreferrer"
+      class="group block p-4 rounded-lg border border-ink-200 bg-white hover:border-ink-300 hover:shadow-sm transition-all"
     >
-      <div className="flex justify-between flex-col p-8 h-full w-full">
+      <div class="flex flex-col h-full gap-3">
         <div>
-          <div className="flex items-center opacity-60">
-            <IconFolder className="mr-0.5" />
-            <span>
-              <h5 className="card-title text-lg text-base-content">
-                {name}
-              </h5>
-            </span>
-          </div>
-          <p className="mb-5 mt-1 text-base-content text-opacity-60 text-sm">
-            {description}
-          </p>
+          <h3 class="font-semibold text-sm text-ink-900 group-hover:text-accent-700 transition-colors">
+            {name}
+          </h3>
+          {description && (
+            <p class="mt-1 text-xs text-ink-500 line-clamp-2 leading-relaxed">
+              {description}
+            </p>
+          )}
         </div>
-        <div className="flex justify-between text-sm text-base-content text-opacity-60">
-          <div className="flex flex-grow">
-            <span className="mr-3 flex items-center">
-              <IconStar className="mr-0.5" />
-              <span>{stargazers_count}</span>
+        <div class="flex items-center justify-between text-xs text-ink-500 mt-auto pt-2 border-t border-ink-100">
+          <div class="flex items-center gap-3">
+            <span class="flex items-center gap-1">
+              <IconStar class="w-3 h-3" /> {stargazers_count}
             </span>
-            <span className="flex items-center">
-              <IconFork className="mr-0.5" />
-              <span>{forks_count}</span>
+            <span class="flex items-center gap-1">
+              <IconFork class="w-3 h-3" /> {forks_count}
             </span>
           </div>
-          <div>
-            <span className="flex items-center">
-              <div
-                className="w-3 h-3 rounded-full mr-1 opacity-60"
+          {language && (
+            <span class="flex items-center gap-1.5">
+              <span
+                class="w-2.5 h-2.5 rounded-full"
                 style={{ backgroundColor: languageColor(language) }}
               />
-              <span>{language}</span>
+              {language}
             </span>
-          </div>
+          )}
         </div>
       </div>
     </a>

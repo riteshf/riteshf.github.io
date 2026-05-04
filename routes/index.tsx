@@ -22,10 +22,6 @@ interface HomePage extends Github {
   projects: ProjectResponse;
 }
 
-const TAGLINE = "Engineering Lead · Full-Stack · AI / Agent tooling";
-const DESCRIPTION =
-  "Ritesh Firodiya — full-stack engineer & lead. ~9 years shipping TypeScript products across React, Next.js, React Native, NestJS. Currently building AI-assisted developer tooling on Anthropic SDK + MCP.";
-
 export const handler: Handlers<HomePage> = {
   async GET(_req, ctx) {
     const [user, projects] = await Promise.all([
@@ -41,46 +37,50 @@ export default function Page({ data }: PageProps<HomePage>) {
     return <h1>User: {profile.github} not found</h1>;
   }
 
-  const pageTitle = `${data.name || profile.title} — ${TAGLINE}`;
+  const pageTitle = `${data.name || profile.title} — ${profile.tagline}`;
 
   return (
     <>
       <Head>
         <title>{pageTitle}</title>
-        <meta name="description" content={DESCRIPTION} />
+        <meta name="description" content={profile.summary} />
         <meta name="author" content={data.name || profile.title} />
         <link rel="canonical" href={profile.website} />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={DESCRIPTION} />
+        <meta property="og:description" content={profile.summary} />
         <meta property="og:image" content={data.avatar_url} />
         <meta property="og:url" content={profile.website} />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content={pageTitle} />
-        <meta name="twitter:description" content={DESCRIPTION} />
+        <meta name="twitter:description" content={profile.summary} />
         <style dangerouslySetInnerHTML={{ __html: CSS }} />
         <meta
           name="google-site-verification"
           content="BBtnEWW-NzqBZtR7EfTb1C5aw41RsghkZR2yeYFtT2I"
         />
       </Head>
-      <main class="min-h-screen p-4 lg:p-10 bg-gray-50">
-        <div class="max-w-7xl mx-auto flex flex-col gap-6">
-          {/* Hero: bio (h1 + CTAs) | social info */}
+      <main class="min-h-screen bg-ink-50 text-ink-900">
+        <div class="max-w-6xl mx-auto px-4 lg:px-8 py-8 lg:py-12 flex flex-col gap-6">
+          {/* Hero row: bio + social info */}
           <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div class="lg:col-span-2">
-              <GithubBioCard {...data} tagline={TAGLINE} />
+              <GithubBioCard
+                {...data}
+                tagline={profile.tagline}
+                summary={profile.summary}
+              />
             </div>
             <SocialInfoCard {...data} {...profile} />
           </div>
 
-          {/* Tech stack — full width, scannable */}
+          {/* Tech stack — full width */}
           <Skills skills={profile.skills} />
 
-          {/* projects — most repos private */}
+          {/* Selected projects */}
           <Projects projects={profile.projects} />
 
-          {/* Experience + education side-by-side */}
+          {/* Experience + education */}
           <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div class="lg:col-span-2">
               <Experiences experiences={profile.experiences} />
@@ -88,23 +88,26 @@ export default function Page({ data }: PageProps<HomePage>) {
             <Education education={profile.education} />
           </div>
 
-          {/* Public GitHub activity — supplementary, demoted to bottom */}
+          {/* Public GitHub repos — supplementary */}
           <RecentProjects
             username={profile.github}
             total={data.projects.total_count}
             projects={data.projects.items}
           />
 
-          <footer class="text-center text-sm text-gray-500 py-6">
-            Built with Deno Fresh · source on{" "}
-            <a
-              href={`https://github.com/${profile.github}/riteshf.github.io`}
-              class="underline hover:text-gray-700"
-              target="_blank"
-              rel="noreferrer"
-            >
-              GitHub
-            </a>
+          <footer class="mt-4 pt-6 border-t border-ink-200 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-ink-500">
+            <span>© {new Date().getFullYear()} {data.name || profile.title}</span>
+            <span>
+              Built with Deno Fresh ·{" "}
+              <a
+                href={`https://github.com/${profile.github}/riteshf.github.io`}
+                class="hover:text-accent-700 underline"
+                target="_blank"
+                rel="noreferrer"
+              >
+                source
+              </a>
+            </span>
           </footer>
         </div>
       </main>

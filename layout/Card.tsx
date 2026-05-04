@@ -1,9 +1,15 @@
+import { ComponentChildren } from "preact";
+
 type CardProps = {
-  children: any;
+  children: ComponentChildren;
+  class?: string;
 };
-const Card = ({ children }: CardProps) => {
+
+const Card = ({ children, class: extra = "" }: CardProps) => {
   return (
-    <div className="card shadow-lg compact bg-base-100">
+    <div
+      class={`bg-white border border-ink-200 rounded-xl shadow-sm ${extra}`}
+    >
       {children}
     </div>
   );

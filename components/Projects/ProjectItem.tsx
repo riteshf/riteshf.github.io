@@ -9,15 +9,15 @@ export type IProjectItem = {
 };
 
 const statusClasses = (status?: string) => {
-  if (!status) return "bg-gray-200 text-gray-700";
+  if (!status) return "bg-ink-100 text-ink-600";
   const s = status.toLowerCase();
   if (s.includes("closed testing") || s.includes("validation")) {
-    return "bg-yellow-100 text-yellow-800";
+    return "bg-amber-50 text-amber-700 border border-amber-200";
   }
   if (s.includes("live") || s.includes("production")) {
-    return "bg-green-100 text-green-800";
+    return "bg-accent-50 text-accent-700 border border-accent-200";
   }
-  return "bg-blue-100 text-blue-800";
+  return "bg-ink-50 text-ink-600 border border-ink-200";
 };
 
 const ProjectItem = (
@@ -25,37 +25,44 @@ const ProjectItem = (
     IProjectItem,
 ) => {
   const inner = (
-    <div class="border border-gray-200 rounded-lg p-4 h-full flex flex-col hover:shadow-md transition-shadow bg-white">
-      <div class="flex items-start justify-between gap-2 mb-1">
-        <h3 class="font-semibold text-gray-900">{name}</h3>
-        <div class="flex items-center gap-1 flex-shrink-0">
-          {status && (
-            <span
-              class={`text-xs uppercase tracking-wide px-2 py-0.5 rounded ${
-                statusClasses(status)
-              }`}
-            >
-              {status}
-            </span>
-          )}
-          {isPrivate && (
-            <span class="text-xs uppercase tracking-wide px-2 py-0.5 rounded bg-gray-100 text-gray-600">
-              private
-            </span>
-          )}
-        </div>
-      </div>
-      <div class="text-sm text-gray-700 mb-2 font-medium">{tagline}</div>
-      <p class="text-sm text-gray-600 mb-3 flex-grow">{description}</p>
-      <div class="flex flex-wrap gap-1">
-        {stack.map((s, i) => (
+    <div class="group h-full flex flex-col p-5 rounded-lg border border-ink-200 bg-white hover:border-ink-300 hover:shadow-md transition-all">
+      <div class="flex items-start justify-between gap-3 mb-1">
+        <h3 class="font-semibold text-ink-900 group-hover:text-accent-700 transition-colors">
+          {name}
+        </h3>
+        {isPrivate && (
           <span
-            key={i}
-            class="text-xs px-2 py-0.5 rounded bg-gray-100 text-gray-700"
+            title="Private repository"
+            class="text-[10px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded text-ink-400 border border-ink-200"
           >
-            {s}
+            private
           </span>
-        ))}
+        )}
+      </div>
+      <div class="text-sm font-medium text-ink-700 mb-2">{tagline}</div>
+      <p class="text-sm text-ink-500 mb-4 flex-grow leading-relaxed">
+        {description}
+      </p>
+      <div class="flex items-center justify-between gap-2">
+        <div class="flex flex-wrap gap-1">
+          {stack.slice(0, 6).map((s, i) => (
+            <span
+              key={i}
+              class="text-[11px] font-mono px-1.5 py-0.5 rounded bg-ink-50 text-ink-600"
+            >
+              {s}
+            </span>
+          ))}
+        </div>
+        {status && (
+          <span
+            class={`text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded flex-shrink-0 ${
+              statusClasses(status)
+            }`}
+          >
+            {status}
+          </span>
+        )}
       </div>
     </div>
   );
@@ -67,7 +74,7 @@ const ProjectItem = (
       </a>
     );
   }
-  return <div class="h-full">{inner}</div>;
+  return inner;
 };
 
 export default ProjectItem;
