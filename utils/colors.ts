@@ -1,9 +1,7 @@
-import colors from "@/data/colors.json" assert { type: "json" };
+import colorsData from "@/data/colors.json" with { type: "json" };
+
+const colors = colorsData as Record<string, { color: string | null; url: string }>;
 
 export const languageColor = (language: string) => {
-  if (typeof colors[language] !== "undefined") {
-    return colors[language].color;
-  } else {
-    return "gray";
-  }
+  return colors[language]?.color ?? "gray";
 };

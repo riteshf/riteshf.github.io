@@ -5,22 +5,36 @@
   "website": "https://riteshf.deno.dev/",
   "email": "firodiya.ritesh@gmail.com",
   "skills": [
-    "Typescript",
-    "NextJS",
-    "React.js",
-    "Javascript",
+    "TypeScript",
+    "JavaScript",
+    "React",
+    "Next.js",
+    "React Native",
+    "Expo",
     "Node.js",
-    "Deno",
+    "NestJS",
     "GraphQL",
-    "REST API",
-    "MongoDB",
+    "Apollo",
+    "Prisma",
     "PostgreSQL",
-    "Git",
-    "CSS",
-    "Antd",
-    "Tailwind",
-    "MUI",
-    "Chakra-UI"
+    "DynamoDB",
+    "Firebase",
+    "Docker",
+    "Turborepo",
+    "Yarn Workspaces",
+    "Tailwind / UniWind",
+    "Zustand",
+    "SQLite",
+    "MMKV",
+    "Stripe",
+    "RevenueCat",
+    "AdMob",
+    "PostHog",
+    "Jest",
+    "ESLint",
+    "Prettier",
+    "Anthropic SDK",
+    "MCP (tooling)"
   ],
   "experiences": [
     {
@@ -42,7 +56,7 @@
     {
       "id": 5,
       "company": "Speechify",
-      "position": "Platform Engineer",
+      "position": "Software Engineer (Contract)",
       "from": "May 2023",
       "to": "August 2023",
       "companyLink": "https://speechify.com",
@@ -51,8 +65,8 @@
           "id": 1,
           "name": "Speechify SDK",
           "description": "An Multiplatform SDK used commonly across Speechify to provide TTS(text-to-speech) and related services.",
-          "role": "Kothlin Developer",
-          "roleDescription": "Build and develop TTS functionality to support multiple platform",
+          "role": "Full Stack Engineer",
+          "roleDescription": "Built and shipped product features across frontend and backend as part of short-term engagement work.",
           "technologies": [6, 10, 12]
         },
         {
@@ -93,6 +107,64 @@
       "from": "June 2017",
       "to": "September 2019",
       "companyLink": "http://www.confluxsys.com/confluxsys/"
+    }
+  ],
+  "projects": [
+    {
+      "name": "DwarSeva",
+      "tagline": "Society management system for Tier-2/3 cities",
+      "description": "Multi-tenant society/visitor/billing platform. Backend, web admin, and resident mobile app in one monorepo.",
+      "stack": ["NestJS", "Next.js", "Expo", "GraphQL", "Prisma", "PostgreSQL", "Turborepo"],
+      "status": "In development",
+      "private": true
+    },
+    {
+      "name": "Scrvio",
+      "tagline": "Privacy-first browser recording SaaS",
+      "description": "Recording platform with orgs/workspaces, auth, and Stripe billing. Roadmap: AI transcription and summaries.",
+      "stack": ["NestJS", "Next.js", "PostgreSQL", "Prisma", "Stripe", "Docker"],
+      "status": "In development",
+      "private": true
+    },
+    {
+      "name": "Codestar",
+      "tagline": "Autonomous-development workflow CLI",
+      "description": "TypeScript CLI that scans repos, builds persistent memory, and runs agent loops with git automation. Built on Anthropic SDK + MCP.",
+      "stack": ["TypeScript", "Anthropic SDK", "MCP", "Node.js"],
+      "status": "In development",
+      "private": true
+    },
+    {
+      "name": "Aakalan",
+      "tagline": "Offline-first Indian expense tracker",
+      "description": "Local-first expense tracker with UPI parsing. Zustand + MMKV state, SQLite storage, PostHog analytics, RevenueCat + AdMob monetization.",
+      "stack": ["React Native", "Expo", "Zustand", "MMKV", "SQLite", "RevenueCat"],
+      "status": "Closed testing",
+      "private": true
+    },
+    {
+      "name": "Learning Platform",
+      "tagline": "LMS with content-as-code",
+      "description": "Courses authored in markdown in a Git repo and synced into the platform. NestJS + Apollo backend, Next.js frontend, Prisma/Postgres.",
+      "stack": ["NestJS", "Apollo GraphQL", "Next.js", "Prisma", "PostgreSQL"],
+      "status": "In development",
+      "private": true
+    },
+    {
+      "name": "Chitragupt",
+      "tagline": "AI tax assistant (India)",
+      "description": "Mobile-first tax-prep assistant validating willingness-to-pay before AY 2027-28 (Income Tax Act 2025) goes live.",
+      "stack": ["React Native", "Expo", "Firebase", "Anthropic SDK"],
+      "status": "Validation phase",
+      "private": true
+    },
+    {
+      "name": "Charades-Bollywood",
+      "tagline": "Heads-Up-style party game with a Bollywood deck",
+      "description": "Mobile party game; ad-supported portfolio piece.",
+      "stack": ["React Native", "Expo", "UniWind", "RevenueCat", "AdMob"],
+      "status": "In development",
+      "private": true
     }
   ],
   "education": [
