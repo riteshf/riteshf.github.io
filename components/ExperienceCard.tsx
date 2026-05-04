@@ -12,47 +12,44 @@ const ExperienceCard = (
   { company, position, from, to, companyLink, description, tags }:
     IExperienceEntry,
 ) => {
-  const headline = (
-    <span class="text-slate-lightest">
-      {position} <span class="text-accent">·</span>{" "}
-      {companyLink
-        ? (
-          <a
-            href={companyLink}
-            target="_blank"
-            rel="noreferrer"
-            class="hover:text-accent transition-colors"
-          >
-            {company}
-          </a>
-        )
-        : <span>{company}</span>}
-    </span>
-  );
+  const companyEl = companyLink
+    ? (
+      <a
+        href={companyLink}
+        target="_blank"
+        rel="noreferrer"
+        class="hover:text-accent transition-colors"
+      >
+        {company}
+      </a>
+    )
+    : <span>{company}</span>;
 
   return (
-    <div class="group relative grid grid-cols-12 gap-3 py-4 px-2 -mx-2 rounded-md transition-colors hover:bg-navy-light/30">
-      <div class="col-span-12 sm:col-span-4 text-xs font-mono uppercase tracking-wider text-slate-dark pt-1">
-        {from} — {to}
+    <div class="group relative py-4 px-2 -mx-2 rounded-md transition-colors hover:bg-navy-light/30">
+      <div class="flex items-baseline gap-3 flex-wrap">
+        <h3 class="text-base font-semibold text-slate-lightest leading-snug flex-1 min-w-0">
+          {position} <span class="text-accent">·</span> {companyEl}
+        </h3>
+        <span class="text-xs font-mono uppercase tracking-wider text-slate-dark whitespace-nowrap">
+          {from} — {to}
+        </span>
       </div>
-      <div class="col-span-12 sm:col-span-8">
-        <h3 class="text-base font-semibold leading-snug">{headline}</h3>
-        {description && (
-          <p class="mt-2 text-sm text-slate leading-relaxed">{description}</p>
-        )}
-        {tags && tags.length > 0 && (
-          <ul class="mt-3 flex flex-wrap gap-1.5">
-            {tags.map((t, i) => (
-              <li
-                key={i}
-                class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-accent-dim text-accent"
-              >
-                {t}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+      {description && (
+        <p class="mt-2 text-sm text-slate leading-relaxed">{description}</p>
+      )}
+      {tags && tags.length > 0 && (
+        <ul class="mt-2 flex flex-wrap gap-1.5">
+          {tags.map((t, i) => (
+            <li
+              key={i}
+              class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-accent-dim text-accent"
+            >
+              {t}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

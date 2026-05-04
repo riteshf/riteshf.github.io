@@ -1,5 +1,6 @@
 import IconLock from "https://deno.land/x/tabler_icons_tsx@0.0.2/tsx/lock.tsx";
 import IconExternalLink from "https://deno.land/x/tabler_icons_tsx@0.0.2/tsx/external-link.tsx";
+import IconMail from "https://deno.land/x/tabler_icons_tsx@0.0.2/tsx/mail.tsx";
 
 export type IProjectEntry = {
   name: string;
@@ -9,6 +10,10 @@ export type IProjectEntry = {
   status?: string;
   link?: string;
   private?: boolean;
+};
+
+type ProjectCardProps = IProjectEntry & {
+  contactEmail: string;
 };
 
 const statusBadge = (status?: string) => {
@@ -22,16 +27,35 @@ const statusBadge = (status?: string) => {
   }
   return (
     <span
-      class={`text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded ${cls}`}
+      class={`text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded ${cls} whitespace-nowrap`}
     >
       {status}
     </span>
   );
 };
 
+const buildContributeMailto = (email: string, project: string) => {
+  const subject = `Interested in ${project}`;
+  const body =
+    `Hi Ritesh,\n\nI came across "${project}" on your portfolio and I'd like ` +
+    `to learn more about it — happy to help out, contribute, or just chat ` +
+    `about how it works.\n\nA bit about me:\n- \n\nThanks,\n`;
+  return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${
+    encodeURIComponent(body)
+  }`;
+};
+
 const ProjectCard = (
-  { name, tagline, description, stack, status, link, private: isPrivate }:
-    IProjectEntry,
+  {
+    name,
+    tagline,
+    description,
+    stack,
+    status,
+    link,
+    private: isPrivate,
+    contactEmail,
+  }: ProjectCardProps,
 ) => {
   const titleEl = link
     ? (
@@ -48,9 +72,12 @@ const ProjectCard = (
     : <span>{name}</span>;
 
   return (
-    <article class="group relative grid grid-cols-12 gap-3 py-5 px-2 -mx-2 rounded-md transition-colors hover:bg-navy-light/30">
-      <div class="col-span-12 sm:col-span-4 pt-1">
-        <div class="flex items-center gap-2 flex-wrap">
+    <article class="group relative py-5 px-2 -mx-2 rounded-md transition-colors hover:bg-navy-light/30">
+      <div class="flex items-baseline gap-3 flex-wrap">
+        <h3 class="text-base font-semibold text-slate-lightest leading-snug flex-1 min-w-0">
+          {titleEl}
+        </h3>
+        <div class="flex items-center gap-1.5 flex-wrap">
           {statusBadge(status)}
           {isPrivate && (
             <span
@@ -62,23 +89,27 @@ const ProjectCard = (
           )}
         </div>
       </div>
-      <div class="col-span-12 sm:col-span-8">
-        <h3 class="text-base font-semibold text-slate-lightest leading-snug">
-          {titleEl}
-        </h3>
-        <p class="mt-1 text-sm font-medium text-slate-light">{tagline}</p>
-        <p class="mt-2 text-sm text-slate leading-relaxed">{description}</p>
-        <ul class="mt-3 flex flex-wrap gap-1.5">
-          {stack.map((s, i) => (
-            <li
-              key={i}
-              class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-accent-dim text-accent"
-            >
-              {s}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <p class="mt-1 text-sm font-medium text-slate-light">{tagline}</p>
+      <p class="mt-2 text-sm text-slate leading-relaxed">{description}</p>
+      <ul class="mt-3 flex flex-wrap gap-1.5">
+        {stack.map((s, i) => (
+          <li
+            key={i}
+            class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-accent-dim text-accent"
+          >
+            {s}
+          </li>
+        ))}
+      </ul>
+      <a
+        href={buildContributeMailto(contactEmail, name)}
+        class="mt-4 inline-flex items-center gap-1.5 text-xs font-mono text-slate-light hover:text-accent transition-colors"
+        title={`Email me about ${name}`}
+      >
+        <IconMail class="w-3.5 h-3.5" />
+        Contribute / learn more
+        <span aria-hidden="true">→</span>
+      </a>
     </article>
   );
 };

@@ -13,9 +13,20 @@
   "about": [
     "I'm a full-stack engineer and lead with about nine years shipping production TypeScript across React, Next.js, React Native, and NestJS. Most recently, I spent a year as a Senior Engineer at Walmart on internal revenue tooling — wrapped up May 2026.",
     "Before that I ran short-term contract engagements (TopLegal as Tech Lead, ManifestIT, Speechify), and held senior IC roles at Masai, Swiggy, Globant, and Confluxsys. I move comfortably across the stack — Postgres schema, GraphQL APIs, React/RN UI, EAS releases — and I've shipped solo on monorepos using Turborepo + Yarn workspaces.",
-    "Right now I'm building a handful of personal products on the side and going deep on agent-based developer tooling with the Anthropic SDK and MCP."
+    "Right now I'm building a handful of products on the side and going deep on agent-based developer tooling with the Anthropic SDK and MCP."
   ],
   "currently": "Open to senior / staff IC and tech-lead roles. Always up to chat about engineering, product, and AI tooling.",
+  "summary": "Full-stack engineer and lead with ~9 years shipping production TypeScript across React, Next.js, React Native, and NestJS. Comfortable end-to-end — Postgres schema to Play Store release. Currently building AI-assisted developer tooling on Anthropic SDK + MCP.",
+  "skills": {
+    "Languages": ["TypeScript", "JavaScript"],
+    "Web": ["React", "Next.js", "Tailwind / UniWind"],
+    "Mobile": ["React Native", "Expo", "EAS", "MMKV", "SQLite"],
+    "Backend": ["Node.js", "NestJS", "Express", "GraphQL", "Apollo"],
+    "Data": ["PostgreSQL", "Prisma", "DynamoDB", "Firebase"],
+    "Tooling": ["Turborepo", "Yarn workspaces", "Docker", "Jest", "ESLint"],
+    "Product": ["Stripe", "RevenueCat", "AdMob", "PostHog"],
+    "AI / Agents": ["Anthropic SDK", "MCP", "Tool-use", "Prompt caching"]
+  },
   "experiences": [
     {
       "company": "Walmart",
@@ -31,7 +42,7 @@
       "position": "Tech Lead & Full-Stack Engineer",
       "from": "Jul 2024",
       "to": "Jan 2025",
-      "companyLink": "",
+      "companyLink": "http://top.legal/",
       "description": "Led architecture and delivery of a contract management platform. Owned GraphQL schema design, DynamoDB modeling, and team direction during the engagement.",
       "tags": ["React", "Node.js", "GraphQL", "DynamoDB"]
     },
@@ -40,7 +51,7 @@
       "position": "Senior Frontend Engineer",
       "from": "Oct 2023",
       "to": "May 2024",
-      "companyLink": "",
+      "companyLink": "https://www.manifestit.io/",
       "description": "Built complex UI workflows for a CMDB management tool in Next.js, integrating against backend services and shipping iteratively with the team.",
       "tags": ["Next.js", "React", "Node.js"]
     },
@@ -92,14 +103,6 @@
   ],
   "projects": [
     {
-      "name": "Codestar",
-      "tagline": "Autonomous-development workflow CLI",
-      "description": "A TypeScript CLI that scans a repository, builds persistent memory of its structure, and runs agent loops over the code with git automation. Built on the Anthropic SDK and Model Context Protocol — what I'm investing the most time in right now.",
-      "stack": ["TypeScript", "Anthropic SDK", "MCP", "Node.js"],
-      "status": "In development",
-      "private": true
-    },
-    {
       "name": "DwarSeva",
       "tagline": "Society management platform for Tier-2/3 cities",
       "description": "Multi-tenant platform for residential societies — visitor logs, billing, notices, resident app. Backend, web admin, and mobile share a single Turborepo monorepo with NestJS + GraphQL + Prisma at the core.",
@@ -116,11 +119,19 @@
       "private": true
     },
     {
-      "name": "Aakalan",
-      "tagline": "Offline-first Indian expense tracker",
-      "description": "Local-first expense tracker that parses UPI payment notifications. Zustand + MMKV for state, SQLite for storage, PostHog for analytics, RevenueCat + AdMob for monetization.",
-      "stack": ["React Native", "Expo", "Zustand", "MMKV", "SQLite", "RevenueCat"],
-      "status": "Closed testing",
+      "name": "Learning Platform",
+      "tagline": "LMS with content-as-code",
+      "description": "Learning platform where courses are authored as markdown in a Git repo and synced into the product on push. NestJS + Apollo backend, Next.js frontend, Prisma over Postgres.",
+      "stack": ["NestJS", "Apollo GraphQL", "Next.js", "Prisma", "PostgreSQL"],
+      "status": "In development",
+      "private": true
+    },
+    {
+      "name": "Codestar",
+      "tagline": "Autonomous-development workflow CLI",
+      "description": "A TypeScript CLI that scans a repository, builds persistent memory of its structure, and runs agent loops over the code with git automation. Built on the Anthropic SDK and Model Context Protocol — what I'm investing the most time in right now.",
+      "stack": ["TypeScript", "Anthropic SDK", "MCP", "Node.js"],
+      "status": "In development",
       "private": true
     }
   ],

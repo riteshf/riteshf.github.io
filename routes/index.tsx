@@ -4,7 +4,6 @@ import Sidebar from "@/components/Sidebar.tsx";
 import About from "@/components/About.tsx";
 import Experience from "@/components/Experience.tsx";
 import Projects from "@/components/Projects.tsx";
-import Contact from "@/components/Contact.tsx";
 
 import profile from "@/profile.json" with { type: "json" };
 
@@ -69,8 +68,7 @@ export default function Page() {
           <div class="lg:w-1/2 lg:py-24 pt-4 pb-24">
             <About paragraphs={profile.about} currently={profile.currently} />
             <Experience experiences={profile.experiences} />
-            <Projects projects={profile.projects} />
-            <Contact email={profile.email} />
+            <Projects projects={profile.projects} contactEmail={profile.email} />
 
             <footer class="mt-12 text-xs text-slate-dark font-mono">
               <p>

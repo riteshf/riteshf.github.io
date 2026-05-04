@@ -16,15 +16,6 @@ const Experience = ({ experiences }: ExperienceProps) => {
           </li>
         ))}
       </ol>
-      <div class="mt-6">
-        <a
-          href="/resume"
-          class="group inline-flex items-baseline gap-1 text-sm font-medium text-slate-lightest hover:text-accent transition-colors"
-        >
-          View full résumé
-          <span aria-hidden="true" class="group-hover:translate-x-0.5 inline-block transition-transform">→</span>
-        </a>
-      </div>
     </Section>
   );
 };

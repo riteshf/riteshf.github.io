@@ -1,56 +1,55 @@
 import { Head } from "$fresh/runtime.ts";
-import { Handlers, PageProps } from "$fresh/server.ts";
-import { CSS, render } from "$gfm";
 
 import profile from "@/profile.json" with { type: "json" };
 
-type ResumePageData = {
-  markdown: string;
-};
-
-const PRINT_CSS = `
-  .resume-body {
+const STYLES = `
+  /* On-screen typography (the white "paper") */
+  .paper {
     color: #0f172a;
     font-family: "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
-    line-height: 1.45;
-    background: transparent;
+    line-height: 1.4;
   }
-  .resume-body h2 { font-size: 1.4rem; margin-top: 0; margin-bottom: 0.15rem; font-weight: 700; letter-spacing: -0.01em; color: #0f172a; }
-  .resume-body h3 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: #64748b; margin-top: 1rem; margin-bottom: 0.4rem; padding-bottom: 0.25rem; border-bottom: 1px solid #e2e8f0; font-weight: 600; }
-  .resume-body h4 { font-size: 0.875rem; margin-top: 0.7rem; margin-bottom: 0.1rem; color: #0f172a; }
-  .resume-body p, .resume-body li { font-size: 0.825rem; color: #334155; margin: 0; }
-  .resume-body p { margin-bottom: 0.3rem; }
-  .resume-body strong { color: #0f172a; }
-  .resume-body em { color: #64748b; font-style: normal; font-family: ui-monospace, SFMono-Regular, monospace; font-size: 0.85em; }
-  .resume-body a { color: #047857; text-decoration: none; }
-  .resume-body a:hover { text-decoration: underline; }
-  .resume-body ul { margin-top: 0.2rem; margin-bottom: 0.3rem; padding-left: 1rem; }
-  .resume-body li { margin-bottom: 0.1rem; }
-  .resume-body hr { border: 0; border-top: 1px solid #e2e8f0; margin: 1rem 0; }
+  .paper h1 { font-size: 1.7rem; font-weight: 700; letter-spacing: -0.01em; color: #0f172a; line-height: 1.15; margin: 0; }
+  .paper h2 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #64748b; font-weight: 600; margin: 0.85rem 0 0.35rem; padding-bottom: 0.2rem; border-bottom: 1px solid #e2e8f0; }
+  .paper .role { font-size: 0.875rem; font-weight: 600; color: #0f172a; }
+  .paper .meta { font-size: 0.7rem; font-family: ui-monospace, SFMono-Regular, monospace; color: #64748b; letter-spacing: 0.02em; }
+  .paper p, .paper li { font-size: 0.8rem; color: #334155; margin: 0; }
+  .paper .desc { margin-top: 0.1rem; }
+  .paper a { color: #047857; text-decoration: none; }
+  .paper a:hover { text-decoration: underline; }
+  .paper .contact-row { font-size: 0.78rem; color: #475569; margin-top: 0.3rem; }
+  .paper .contact-row > span:not(:last-child)::after { content: " · "; color: #cbd5e1; }
+  .paper .entry + .entry { margin-top: 0.5rem; }
+  .paper .entry-head { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; }
+  .paper .skill-row { display: grid; grid-template-columns: 6rem 1fr; gap: 0.5rem; padding: 0.05rem 0; align-items: baseline; }
+  .paper .skill-row dt { font-size: 0.78rem; font-weight: 600; color: #0f172a; }
+  .paper .skill-row dd { font-size: 0.78rem; color: #334155; margin: 0; }
+  .paper .skill-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1.5rem; }
 
   @media print {
     .no-print { display: none !important; }
-    body { background: white !important; }
-    .resume-paper { box-shadow: none !important; border: 0 !important; padding: 0 !important; max-width: none !important; }
-    .resume-body { line-height: 1.4; }
-    .resume-body p, .resume-body li { font-size: 0.78rem; }
-    .resume-body h2 { font-size: 1.25rem; }
-    .resume-body h3 { font-size: 0.7rem; margin-top: 0.7rem; }
-    .resume-body h4 { font-size: 0.82rem; margin-top: 0.45rem; }
-    .resume-body h3, .resume-body h4 { break-after: avoid; }
-    .resume-body li, .resume-body p { break-inside: avoid; }
-    @page { margin: 0.45in; }
+    body { background: white !important; margin: 0 !important; }
+    .paper-wrap { background: white !important; padding: 0 !important; }
+    .paper { box-shadow: none !important; border: 0 !important; padding: 0 !important; max-width: none !important; }
+    .paper p, .paper li, .paper .skill-row dt, .paper .skill-row dd, .paper .contact-row { font-size: 0.74rem; }
+    .paper h1 { font-size: 1.4rem; }
+    .paper h2 { font-size: 0.65rem; margin-top: 0.6rem; margin-bottom: 0.25rem; }
+    .paper .role { font-size: 0.8rem; }
+    .paper .meta { font-size: 0.65rem; }
+    .paper .entry + .entry { margin-top: 0.35rem; }
+    .paper h2, .paper .role { break-after: avoid; }
+    .paper .entry, .paper p, .paper li { break-inside: avoid; }
+    @page { size: Letter; margin: 0.4in; }
   }
 `;
 
-export const handler: Handlers<ResumePageData> = {
-  async GET(_req, ctx) {
-    const markdown = await Deno.readTextFile("./data/resume.md");
-    return ctx.render({ markdown });
-  },
-};
+export default function ResumePage() {
+  const exp = profile.experiences;
+  const projects = profile.projects;
+  const skills = profile.skills as Record<string, string[]>;
+  const education = profile.education;
+  const phoneFmt = profile.phone.replace(/^\+91/, "+91 ");
 
-export default function ResumePage({ data }: PageProps<ResumePageData>) {
   return (
     <>
       <Head>
@@ -63,8 +62,7 @@ export default function ResumePage({ data }: PageProps<ResumePageData>) {
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
-        <style dangerouslySetInnerHTML={{ __html: CSS }} />
-        <style dangerouslySetInnerHTML={{ __html: PRINT_CSS }} />
+        <style dangerouslySetInnerHTML={{ __html: STYLES }} />
       </Head>
       <main class="min-h-screen bg-navy text-slate-light">
         {/* Toolbar — hidden when printing */}
@@ -95,12 +93,122 @@ export default function ResumePage({ data }: PageProps<ResumePageData>) {
         </div>
 
         {/* Letter-paper container */}
-        <div class="py-8 lg:py-12 px-3">
-          <article class="resume-paper max-w-3xl mx-auto bg-white rounded-lg shadow-2xl px-6 py-6 lg:px-12 lg:py-10">
-            <div
-              class="resume-body"
-              dangerouslySetInnerHTML={{ __html: render(data.markdown) }}
-            />
+        <div class="paper-wrap py-8 lg:py-10 px-3">
+          <article class="paper max-w-3xl mx-auto bg-white rounded-lg shadow-2xl px-7 py-7 lg:px-10 lg:py-9">
+            {/* Header */}
+            <header>
+              <div class="flex items-baseline justify-between gap-4 flex-wrap">
+                <h1>{profile.name}</h1>
+                <span class="meta">{profile.location}</span>
+              </div>
+              <p class="desc text-slate-700" style="font-size:0.85rem; margin-top:0.15rem;">
+                {profile.headline} {profile.tagline}
+              </p>
+              <div class="contact-row">
+                <span>
+                  <a href={`mailto:${profile.email}`}>{profile.email}</a>
+                </span>
+                <span>{phoneFmt}</span>
+                <span>
+                  <a
+                    href={`https://github.com/${profile.github}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    github.com/{profile.github}
+                  </a>
+                </span>
+                <span>
+                  <a
+                    href={`https://www.linkedin.com/in/${profile.linkedin}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    linkedin.com/in/{profile.linkedin}
+                  </a>
+                </span>
+                <span>
+                  <a href={profile.website} target="_blank" rel="noreferrer">
+                    riteshf.deno.dev
+                  </a>
+                </span>
+              </div>
+            </header>
+
+            {/* Summary */}
+            <section>
+              <h2>Summary</h2>
+              <p>{profile.summary}</p>
+            </section>
+
+            {/* Skills — moved up so recruiters can scan immediately */}
+            <section>
+              <h2>Skills</h2>
+              <dl class="skill-grid">
+                {Object.entries(skills).map(([cat, items]) => (
+                  <div key={cat} class="skill-row">
+                    <dt>{cat}</dt>
+                    <dd>{items.join(", ")}</dd>
+                  </div>
+                ))}
+              </dl>
+            </section>
+
+            {/* Experience */}
+            <section>
+              <h2>Experience</h2>
+              {exp.map((e, i) => (
+                <div key={i} class="entry">
+                  <div class="entry-head">
+                    <span class="role">
+                      {e.position} ·{" "}
+                      {e.companyLink
+                        ? (
+                          <a
+                            href={e.companyLink}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            {e.company}
+                          </a>
+                        )
+                        : e.company}
+                    </span>
+                    <span class="meta">{e.from} – {e.to}</span>
+                  </div>
+                  {e.description && <p class="desc">{e.description}</p>}
+                </div>
+              ))}
+            </section>
+
+            {/* Projects */}
+            <section>
+              <h2>Projects</h2>
+              {projects.map((p, i) => (
+                <div key={i} class="entry">
+                  <p>
+                    <strong>{p.name}</strong> — {p.tagline}.{" "}
+                    <span style="color:#475569">
+                      {p.description}
+                    </span>{" "}
+                    <span class="meta">({p.stack.join(", ")})</span>
+                  </p>
+                </div>
+              ))}
+            </section>
+
+            {/* Education */}
+            <section>
+              <h2>Education</h2>
+              {education.map((ed, i) => (
+                <div key={i} class="entry">
+                  <div class="entry-head">
+                    <span class="role">{ed.degree} · {ed.institution}</span>
+                    <span class="meta">{ed.from} – {ed.to}</span>
+                  </div>
+                </div>
+              ))}
+            </section>
           </article>
         </div>
       </main>
