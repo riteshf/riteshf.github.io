@@ -1,164 +1,135 @@
 {
-  "title": "Ritesh Portfolio",
+  "name": "Ritesh Firodiya",
+  "title": "Ritesh Firodiya — Engineer who ships",
   "github": "riteshf",
   "linkedin": "riteshfirodiya",
   "website": "https://riteshf.deno.dev/",
   "email": "firodiya.ritesh@gmail.com",
-  "tagline": "Engineering Lead · Full-Stack · AI / Agent tooling",
-  "summary": "Full-stack engineer & lead with ~9 years shipping TypeScript products across React, Next.js, React Native, and NestJS. Currently building AI-assisted developer tooling on Anthropic SDK + MCP.",
-  "skills": {
-    "Languages": ["TypeScript", "JavaScript"],
-    "Web": ["React", "Next.js", "Tailwind / UniWind", "Twind"],
-    "Mobile": ["React Native", "Expo", "Zustand", "MMKV", "SQLite"],
-    "Backend": ["Node.js", "NestJS", "GraphQL", "Apollo", "Prisma"],
-    "Data": ["PostgreSQL", "DynamoDB", "Firebase", "SQLite"],
-    "Infra & Tooling": ["Docker", "Turborepo", "Yarn Workspaces", "Jest", "ESLint", "Prettier"],
-    "Product & Growth": ["Stripe", "RevenueCat", "AdMob", "PostHog"],
-    "AI / Agents": ["Anthropic SDK", "MCP", "Tool-use", "Prompt caching"]
-  },
+  "phone": "+919226737797",
+  "location": "Pune, India",
+  "avatar": "https://avatars.githubusercontent.com/u/40817224?v=4",
+  "headline": "Engineer who ships.",
+  "tagline": "~9 years across web, mobile, and backend. Currently building AI tools on Anthropic SDK + MCP.",
+  "about": [
+    "I'm a full-stack engineer and lead with about nine years shipping production TypeScript across React, Next.js, React Native, and NestJS. Most recently, I spent a year as a Senior Engineer at Walmart on internal revenue tooling — wrapped up May 2026.",
+    "Before that I ran short-term contract engagements (TopLegal as Tech Lead, ManifestIT, Speechify), and held senior IC roles at Masai, Swiggy, Globant, and Confluxsys. I move comfortably across the stack — Postgres schema, GraphQL APIs, React/RN UI, EAS releases — and I've shipped solo on monorepos using Turborepo + Yarn workspaces.",
+    "Right now I'm building a handful of personal products on the side and going deep on agent-based developer tooling with the Anthropic SDK and MCP."
+  ],
+  "currently": "Open to senior / staff IC and tech-lead roles. Always up to chat about engineering, product, and AI tooling.",
   "experiences": [
     {
-      "id": 7,
-      "company": "TopLegal",
-      "position": "Tech Lead and Full Stack Engineer",
-      "from": "July 2024",
-      "to": "January 2025",
-      "companyLink": ""
+      "company": "Walmart",
+      "position": "Senior Software Engineer",
+      "from": "Apr 2025",
+      "to": "May 2026",
+      "companyLink": "https://www.walmart.com/",
+      "description": "Built and shipped on an internal revenue management system across web and mobile. Worked end-to-end across React, React Native, TypeScript, and Node.",
+      "tags": ["React", "React Native", "TypeScript", "Node.js"]
     },
     {
-      "id": 6,
+      "company": "TopLegal",
+      "position": "Tech Lead & Full-Stack Engineer",
+      "from": "Jul 2024",
+      "to": "Jan 2025",
+      "companyLink": "",
+      "description": "Led architecture and delivery of a contract management platform. Owned GraphQL schema design, DynamoDB modeling, and team direction during the engagement.",
+      "tags": ["React", "Node.js", "GraphQL", "DynamoDB"]
+    },
+    {
       "company": "ManifestIT",
       "position": "Senior Frontend Engineer",
-      "from": "October 2023",
+      "from": "Oct 2023",
       "to": "May 2024",
-      "companyLink": ""
+      "companyLink": "",
+      "description": "Built complex UI workflows for a CMDB management tool in Next.js, integrating against backend services and shipping iteratively with the team.",
+      "tags": ["Next.js", "React", "Node.js"]
     },
     {
-      "id": 5,
       "company": "Speechify",
       "position": "Software Engineer (Contract)",
       "from": "May 2023",
-      "to": "August 2023",
+      "to": "Aug 2023",
       "companyLink": "https://speechify.com",
-      "projects": [
-        {
-          "id": 1,
-          "name": "Speechify SDK",
-          "description": "An Multiplatform SDK used commonly across Speechify to provide TTS(text-to-speech) and related services.",
-          "role": "Full Stack Engineer",
-          "roleDescription": "Built and shipped product features across frontend and backend as part of short-term engagement work.",
-          "technologies": [6, 10, 12]
-        },
-        {
-          "id": 2,
-          "name": "Dubbing Studio",
-          "description": "A Video Dubbing Platform useful for translating Audio for Video",
-          "role": "Full Stack Developer",
-          "roleDescription": "Develop API's and Svelte Components to provide an seemless experience while dubbing Video",
-          "technologies": [4, 7, 9, 14, 1, 2, 10, 12]
-        }
-      ]
+      "description": "Worked on a multiplatform TTS SDK and the Dubbing Studio — a video-translation product. Full-stack across Svelte components and GraphQL APIs.",
+      "tags": ["Svelte", "Node.js", "GraphQL"]
     },
     {
-      "id": 4,
-      "company": "Masai",
-      "position": "SDE-3",
-      "from": "October 2021",
+      "company": "Masai School",
+      "position": "Senior Software Engineer (SDE-3)",
+      "from": "Oct 2021",
       "to": "May 2023",
-      "companyLink": "https://masaischool.com"
+      "companyLink": "https://masaischool.com",
+      "description": "Took multiple applications from idea to production with full delivery ownership. Mentored junior engineers across React, Node, GraphQL, Prisma, and AWS.",
+      "tags": ["React", "Node.js", "GraphQL", "Prisma", "AWS"]
     },
     {
-      "company": "Swiggy (Contract by Recro)",
-      "position": "Senior Software Engineer ",
-      "from": "November 2020",
-      "to": "September 2021",
-      "companyLink": "https://www.swiggy.com/"
+      "company": "Swiggy (via Recro)",
+      "position": "Senior Software Engineer",
+      "from": "Nov 2020",
+      "to": "Sep 2021",
+      "companyLink": "https://www.swiggy.com/",
+      "description": "Shipped consumer-app features in React/TypeScript/Node. Worked on auth and ticketing modules; partnered with PM/QA on production triage.",
+      "tags": ["React", "TypeScript", "Node.js", "GraphQL"]
     },
     {
       "company": "Globant",
-      "position": "Senior Software  Engineer",
-      "from": "September 2019",
-      "to": "November 2020",
-      "companyLink": "https://www.globant.com/"
+      "position": "Senior Software Engineer",
+      "from": "Sep 2019",
+      "to": "Nov 2020",
+      "companyLink": "https://www.globant.com/",
+      "description": "Web applications for banking and auditing clients. Pixel-accurate UI work in React, integrating backend systems via Node.",
+      "tags": ["React", "Node.js"]
     },
     {
       "company": "Confluxsys",
-      "position": "Software  Engineer",
-      "from": "June 2017",
-      "to": "September 2019",
-      "companyLink": "http://www.confluxsys.com/confluxsys/"
+      "position": "Software Engineer",
+      "from": "Jun 2017",
+      "to": "Sep 2019",
+      "companyLink": "http://www.confluxsys.com/confluxsys/",
+      "description": "Full-stack engineer at a startup. Shipped frontend, backend, and database work with end-to-end delivery ownership.",
+      "tags": ["JavaScript", "Node.js"]
     }
   ],
   "projects": [
     {
+      "name": "Codestar",
+      "tagline": "Autonomous-development workflow CLI",
+      "description": "A TypeScript CLI that scans a repository, builds persistent memory of its structure, and runs agent loops over the code with git automation. Built on the Anthropic SDK and Model Context Protocol — what I'm investing the most time in right now.",
+      "stack": ["TypeScript", "Anthropic SDK", "MCP", "Node.js"],
+      "status": "In development",
+      "private": true
+    },
+    {
       "name": "DwarSeva",
-      "tagline": "Society management system for Tier-2/3 cities",
-      "description": "Multi-tenant society/visitor/billing platform. Backend, web admin, and resident mobile app in one monorepo.",
-      "stack": ["NestJS", "Next.js", "Expo", "GraphQL", "Prisma", "PostgreSQL", "Turborepo"],
+      "tagline": "Society management platform for Tier-2/3 cities",
+      "description": "Multi-tenant platform for residential societies — visitor logs, billing, notices, resident app. Backend, web admin, and mobile share a single Turborepo monorepo with NestJS + GraphQL + Prisma at the core.",
+      "stack": ["NestJS", "Next.js", "Expo", "GraphQL", "Prisma", "PostgreSQL"],
       "status": "In development",
       "private": true
     },
     {
       "name": "Scrvio",
-      "tagline": "Privacy-first browser recording SaaS",
-      "description": "Recording platform with orgs/workspaces, auth, and Stripe billing. Roadmap: AI transcription and summaries.",
-      "stack": ["NestJS", "Next.js", "PostgreSQL", "Prisma", "Stripe", "Docker"],
-      "status": "In development",
-      "private": true
-    },
-    {
-      "name": "Codestar",
-      "tagline": "Autonomous-development workflow CLI",
-      "description": "TypeScript CLI that scans repos, builds persistent memory, and runs agent loops with git automation. Built on Anthropic SDK + MCP.",
-      "stack": ["TypeScript", "Anthropic SDK", "MCP", "Node.js"],
+      "tagline": "Privacy-first browser-recording SaaS",
+      "description": "A Loom-style screen recorder with orgs/workspaces, auth, and Stripe-powered billing. Roadmap includes AI transcription and summaries on top of self-hosted storage.",
+      "stack": ["NestJS", "Next.js", "PostgreSQL", "Prisma", "Stripe"],
       "status": "In development",
       "private": true
     },
     {
       "name": "Aakalan",
       "tagline": "Offline-first Indian expense tracker",
-      "description": "Local-first expense tracker with UPI parsing. Zustand + MMKV state, SQLite storage, PostHog analytics, RevenueCat + AdMob monetization.",
+      "description": "Local-first expense tracker that parses UPI payment notifications. Zustand + MMKV for state, SQLite for storage, PostHog for analytics, RevenueCat + AdMob for monetization.",
       "stack": ["React Native", "Expo", "Zustand", "MMKV", "SQLite", "RevenueCat"],
       "status": "Closed testing",
-      "private": true
-    },
-    {
-      "name": "Learning Platform",
-      "tagline": "LMS with content-as-code",
-      "description": "Courses authored in markdown in a Git repo and synced into the platform. NestJS + Apollo backend, Next.js frontend, Prisma/Postgres.",
-      "stack": ["NestJS", "Apollo GraphQL", "Next.js", "Prisma", "PostgreSQL"],
-      "status": "In development",
-      "private": true
-    },
-    {
-      "name": "Chitragupt",
-      "tagline": "AI tax assistant (India)",
-      "description": "Mobile-first tax-prep assistant validating willingness-to-pay before AY 2027-28 (Income Tax Act 2025) goes live.",
-      "stack": ["React Native", "Expo", "Firebase", "Anthropic SDK"],
-      "status": "Validation phase",
-      "private": true
-    },
-    {
-      "name": "Charades-Bollywood",
-      "tagline": "Heads-Up-style party game with a Bollywood deck",
-      "description": "Mobile party game; ad-supported portfolio piece.",
-      "stack": ["React Native", "Expo", "UniWind", "RevenueCat", "AdMob"],
-      "status": "In development",
       "private": true
     }
   ],
   "education": [
     {
       "institution": "P.V.G. College of Engineering and Technology",
-      "degree": "Bachelor in Computer Engineering",
+      "degree": "B.E. Computer Engineering",
       "from": "2013",
       "to": "2017"
-    },
-    {
-      "institution": "Vishwakarma Institue of Technology",
-      "degree": "Higher Secondary School",
-      "from": "2011",
-      "to": "2013"
     }
   ]
 }

@@ -7,15 +7,16 @@ Guidance for Claude Code working in this repository.
 Public personal portfolio for Ritesh Firodiya, deployed to **Deno Deploy** at
 https://riteshf.deno.dev/ via GitHub Actions on every push to `main`.
 
-Stack: **Deno Fresh 1.1.2 + Preact + Twind**. No Node, no npm, no package.json.
-Resume content (`data/resume.md`) is also rendered by the site at `/resume`.
+Stack: **Deno Fresh 1.1.2 + Preact + Twind**. No Node, no npm, no
+package.json. Resume content (`data/resume.md`) is also rendered by the site at
+`/resume`.
 
 ## Commands
 
 ```bash
-deno task start          # dev server with watch on routes/ and static/
-deno fmt                 # format
-deno check **/*.ts **/*.tsx  # type check (no dedicated task wired)
+deno task start                # dev server with watch on routes/ and static/
+deno fmt                       # format
+deno check routes/*.tsx        # type check (no dedicated task wired)
 ```
 
 There is **no test suite, no lint task, no build script**. Deployment uploads
@@ -26,41 +27,62 @@ source directly via `denoland/deployctl@v1` (see
 
 - `main.ts` → boots Fresh with the Twind plugin
 - `dev.ts` → watch-mode wrapper; **regenerates `fresh.gen.ts`** by scanning
-  `routes/` and `islands/`
-- `fresh.gen.ts` → **the route manifest. MUST be committed.** Adding a file
-  under `routes/` does nothing in production until `deno task start` is run
-  locally to regenerate this file.
-- `routes/index.tsx` → home; fetches GitHub user + recent repos at request time
-- `routes/resume.tsx` → reads `data/resume.md` and renders via `$gfm`
-- `static/*` → served as-is at `/` (so `static/resume.md` is downloadable at
-  `/resume.md`, `static/resume.pdf` at `/resume.pdf`)
+  `routes/`
+- `fresh.gen.ts` → **route manifest. MUST be committed.** Adding a file under
+  `routes/` does nothing in production until `deno task start` is run locally
+  to regenerate this file.
+- `routes/index.tsx` → home; **no network calls** — everything reads from
+  `profile.json`. Brittany-Chiang-style sticky sidebar (left, 50%) + scrolling
+  content (right, 50%).
+- `routes/resume.tsx` → reads `data/resume.md`, renders via `$gfm`. Toolbar
+  with print + PDF download. Dedicated `@media print` CSS produces a clean PDF
+  via `Cmd+P → Save as PDF`.
+- `static/*` → served as-is (so `static/resume.md` at `/resume.md`,
+  `static/resume.pdf` at `/resume.pdf`).
 
-## Data model (single source of truth)
+## File layout
 
-`profile.json` drives everything that isn't a GitHub API response:
+```
+components/    Sidebar, Section, About, Experience(+Card), Projects(+Card), Contact
+routes/        index.tsx, resume.tsx
+data/          resume.md (source of truth)
+static/        resume.md (mirror), resume.pdf, favicon, etc.
+profile.json   single source of truth for all home-page data
+twind.config.ts  custom theme: navy/slate/accent palette
+```
 
-- `skills[]` — flat tag list shown in the Tech Stack card
-- `experiences[]` — work history (Experience component)
-- `education[]` — degrees (Education component)
-- `projects[]` _(if added)_ — curated personal projects (most of mine are
-  private)
+There is no `layout/`, `utils/`, `islands/`, or shared types directory —
+component types live next to the component.
 
-Two legacy/unused fields exist in the codebase and should not be expanded:
+## Data model
 
-- `skills.json` (root) — old technology catalog referenced only by the unused
-  `experiences[5].projects.technologies` ID arrays inside `profile.json`. Keep
-  flat `skills[]` instead.
-- `components/GitIntroduction.tsx` — not imported by any route.
+`profile.json` is the single source of truth for the home page:
 
-## Resume content rules
+- `name`, `headline`, `tagline` — hero copy
+- `about[]` — paragraphs of the About section
+- `currently` — short "what I'm doing now" line under About
+- `experiences[]` — each entry has `company`, `position`, `from`, `to`,
+  `companyLink`, `description`, `tags[]`
+- `projects[]` — each entry has `name`, `tagline`, `description`, `stack[]`,
+  `status`, `link?`, `private`
+- `education[]` — only used in `data/resume.md`, not on home page
+- `github`, `linkedin`, `email`, `avatar`, `location`, `website` — identity
 
-There are (historically) 3 copies of the resume markdown floating around. Treat
-**`data/resume.md` as the single source of truth**. `static/resume.md` exists
-only because the home-page download button links to `/resume.md` — keep them in
-sync (or replace with a route handler later). The PDF lives at
-`static/resume.pdf` and is served at `/resume.pdf`.
+The home page does **not** fetch from the GitHub API. Avatar URL is
+hard-coded in `profile.json` as a GitHub avatar URL (no rate-limit risk).
 
-Do not re-introduce a copy at the repo root.
+## Resume sync rule
+
+`data/resume.md` is the source of truth. `static/resume.md` is a manual mirror
+to keep `/resume.md` direct-download working. After editing
+`data/resume.md`, run:
+
+```bash
+cp data/resume.md static/resume.md
+```
+
+The PDF at `static/resume.pdf` is regenerated by opening `/resume` in a
+browser → `Cmd+P → Save as PDF`. Print CSS is wired in `routes/resume.tsx`.
 
 ## Personal projects on a public site
 
@@ -68,10 +90,10 @@ Most projects under `../` (DwarSeva, Scrvio, Learning Platform, Codestar,
 Aakalan, Charades-Bollywood, Chitragupt, Tic-Tac-Toe) are **private repos**.
 Policy:
 
-- OK to list them with stack + one-line outcome (they're already in
-  `data/resume.md`).
+- OK to list them with stack + outcome — they're in `profile.json.projects[]`
+  and `data/resume.md`.
 - Do **not** link to source — link to the public artifact instead (Play Store,
-  deno.dev, etc.) when one exists, otherwise no link.
+  deno.dev, etc.) when one exists.
 - Do **not** paste excerpts of private code, infra config, secrets, or
   internal-only product details from `../` into this repo.
 
@@ -79,14 +101,13 @@ Policy:
 
 - Adding a route → must run `deno task start` once locally to regenerate
   `fresh.gen.ts`, then commit it. CI does **not** regenerate it.
-- The home page hits the unauthenticated GitHub API — rate limit is 60/hr per
-  IP. Don't add more API calls without caching.
-- Twind config is currently empty (`twind.config.ts`). Many existing class names
-  look like DaisyUI (`card`, `card-body`, `bg-base-100`) — they only render
-  correctly because Twind happens to compile some of them as utilities. Prefer
-  plain Tailwind utilities for new components.
-- Imports use either `@/...` or relative paths inconsistently. `@/` is wired in
-  `import_map.json` and is preferred for new code.
+- Deno 2.7+ requires `with { type: "json" }` (not `assert`). All JSON imports
+  in this repo already use `with`.
+- Theme tokens (`bg-navy`, `text-slate-light`, `text-accent`, etc.) are
+  defined in `twind.config.ts` — adding new tokens requires extending it
+  there.
+- Imports use `@/...` (configured in `import_map.json`). Prefer this over
+  relative paths.
 
 ## Deploy
 

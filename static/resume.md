@@ -1,6 +1,6 @@
 ## Ritesh Firodiya
 
-**Engineering Lead · Full‑Stack Engineer · Consultant (Web + Mobile)**
+**Engineering Lead · Full‑Stack Engineer · AI / Agent tooling**
 
 **Email:** firodiya.ritesh@gmail.com\
 **Phone:** (+91) 9226737797\
@@ -10,108 +10,87 @@
 
 ### Summary
 
-Full‑stack engineer/lead with ~9 years building and shipping TypeScript-first
-products across React/Next.js, React Native (Expo), and Node/NestJS backends.
-Strong in GraphQL/Apollo, Prisma/Postgres, monorepos (Turborepo/Yarn
-workspaces), and production-ready product engineering (auth, billing, analytics,
-offline-first). Currently building AI-assisted developer tooling on Anthropic
-SDK + MCP.
+Full‑stack engineer and lead with ~9 years shipping production TypeScript across
+React, Next.js, React Native, and NestJS. Comfortable end-to-end — Postgres
+schema to Play Store release. Currently building AI-assisted developer tooling
+on the Anthropic SDK and MCP.
 
 ### Experience
 
-**Independent / Building** · _2025 – Present_
+**Walmart — Senior Software Engineer** · _Apr 2025 – May 2026_
 
-- Designing and building shipped product across multiple personal projects:
-  society management (DwarSeva), browser-recording SaaS (Scrvio), expense
-  tracking (Aakalan), and AI-assisted developer tooling (Codestar).
-- Hands-on with Anthropic SDK + MCP for autonomous-agent workflows; Stripe /
-  RevenueCat / AdMob for monetization; Turborepo monorepos across web + mobile +
-  backend.
+- Built and shipped on an internal revenue management system across web and
+  mobile.
+- Worked end-to-end across React, React Native, TypeScript, and Node.
 
 **Contract Software Engineer — Remote** · _May 2023 – Jan 2025_
 
-- Delivered short-term, project-based engagements (sequential, not parallel)
-  across React / React Native / Next.js and Node.js systems.
-- **Walmart:** Internal revenue management system (React, React Native,
-  TypeScript, Node.js).
-- **TopLegal:** Contract management platform (React, Node.js, GraphQL,
-  DynamoDB) — Tech Lead.
-- **ManifestIT:** CMDB management tool (Next.js, React, Node.js) — Senior
-  Frontend.
-- **Speechify:** Multiplatform TTS SDK and Dubbing Studio (Svelte + Node +
+- Sequential engagements across React / React Native / Next.js and Node.js.
+- **TopLegal:** Contract management platform — Tech Lead (React, Node.js,
+  GraphQL, DynamoDB).
+- **ManifestIT:** CMDB management tool — Senior Frontend (Next.js, React,
+  Node.js).
+- **Speechify:** Multiplatform TTS SDK and Dubbing Studio (Svelte, Node,
   GraphQL).
-- Collaborated with stakeholders to scope work, ship iteratively, and maintain
-  quality in fast-moving environments.
 
-**Masai School — Senior Developer Engineer 3** · _Bangalore · Oct 2021 – May
+**Masai School — Senior Software Engineer 3** · _Bangalore · Oct 2021 – May
 2023_
 
-- Led multiple applications from idea → production, owning delivery and
-  technical direction.
-- Mentored junior engineers in React, Node.js, GraphQL, Prisma, and AWS;
-  improved overall execution and engineering practices.
-- Built in high-velocity teams with strong ownership and cross-functional
-  collaboration.
+- Led multiple applications from idea to production with full delivery
+  ownership.
+- Mentored junior engineers across React, Node.js, GraphQL, Prisma, and AWS.
 
-**Swiggy — Senior Software Engineer** · _Bangalore · Nov 2020 – Sep 2021_
+**Swiggy — Senior Software Engineer (via Recro)** · _Bangalore · Nov 2020 – Sep
+2021_
 
-- Shipped features in React, TypeScript, Node.js, and GraphQL; partnered with
-  PM/QA/engineering to resolve production issues.
-- Worked on authentication and ticketing-related modules.
+- Shipped consumer-app features in React, TypeScript, Node.js, and GraphQL.
+- Worked on auth and ticketing modules; partnered with PM/QA on production
+  triage.
 
 **Globant — Senior Software Engineer** · _Pune · Sep 2019 – Nov 2020_
 
-- Delivered web applications in banking/auditing domains using React + Node.js.
-- Implemented pixel-accurate UI components and supported integration with
-  backend systems.
+- Web applications for banking and auditing clients in React + Node.js.
+- Pixel-accurate UI work integrated against backend systems.
 
 **Confluxsys — Software Engineer** · _Pune · Jun 2017 – Sep 2019_
 
-- Full-stack engineer in a startup setting: shipped across frontend + backend,
-  plus database work and delivery ownership.
+- Full-stack engineer in a startup — frontend, backend, database, end-to-end
+  ownership.
 
 ### Skills
 
 **Languages:** TypeScript, JavaScript\
-**Web frontend:** React, Next.js, Tailwind/UniWind, MUI, Ant Design\
-**Mobile:** React Native, Expo, Expo Router, EAS builds, offline-first patterns\
-**Backend:** Node.js, NestJS, Express, GraphQL, Apollo, JWT auth, OAuth\
+**Web frontend:** React, Next.js, Tailwind / UniWind\
+**Mobile:** React Native, Expo, Expo Router, EAS, offline-first patterns\
+**Backend:** Node.js, NestJS, Express, GraphQL, Apollo, REST\
 **Data:** PostgreSQL, Prisma, DynamoDB, Firebase, SQLite (expo-sqlite), MMKV\
 **Monorepo & tooling:** Turborepo, Yarn workspaces, ESLint, Prettier, Jest,
 Git/GitHub\
-**Infra/ops:** Docker, Terraform; CI/CD (Jenkins/Bamboo/Harness experience)\
+**Infra/ops:** Docker, Terraform; CI/CD (Jenkins / Bamboo / Harness)\
 **Product & growth tooling:** Stripe billing, RevenueCat (mobile IAP), AdMob,
-PostHog analytics\
+PostHog\
 **AI / Agent engineering:** Anthropic SDK, MCP (Model Context Protocol),
 tool-based agent workflows, structured outputs, prompt caching, evaluation
-loops; production use in Codestar (autonomous-dev CLI) and Chitragupt (AI tax
-assistant)
+loops
 
 ### Personal Projects
 
-**DwarSeva — Society management system (monorepo)**\
-NestJS, Next.js, Expo, GraphQL, Prisma, PostgreSQL, Docker, Turborepo/Yarn
-workspaces.
+**Codestar — Autonomous-development workflow CLI**\
+TypeScript CLI built on the Anthropic SDK + MCP. Scans repos, builds persistent
+memory, runs agent loops with git automation. The thing I'm investing the most
+time in right now.
 
-**Learning Platform — LMS “content-as-code”**\
-NestJS + Apollo GraphQL, Next.js, Prisma/Postgres; Git-backed course content
-sync.
+**DwarSeva — Society management platform (monorepo)**\
+NestJS + Next.js + Expo + GraphQL + Prisma + PostgreSQL inside a single
+Turborepo. Targeting Tier-2/3 cities with a DPDP-first posture.
 
-**Scrvio — Privacy-first browser recording SaaS**\
-Recording platform with orgs/workspaces, auth, and Stripe-powered billing;
-roadmap includes AI transcription/summaries.
+**Scrvio — Privacy-first browser-recording SaaS**\
+Recording platform with orgs, workspaces, auth, and Stripe-powered billing.
+Roadmap: AI transcription and summaries.
 
 **Aakalan — Offline-first Indian expense tracker (closed testing)**\
-React Native + Expo, Zustand + MMKV, SQLite, analytics (PostHog), monetization
-(RevenueCat, AdMob).
-
-**Codestar — Autonomous development workflow CLI**\
-TypeScript CLI using Anthropic SDK + MCP; scans repos, builds "memory", and runs
-agent loops with git automation.
-
-**Chitragupt — AI tax assistant (India)**\
-React Native + Expo + Firebase + Anthropic SDK; mobile-first tax-prep assistant
-in validation phase ahead of AY 2027-28 (Income Tax Act 2025).
+React Native + Expo, Zustand + MMKV, SQLite, PostHog analytics, RevenueCat +
+AdMob.
 
 ### Education
 

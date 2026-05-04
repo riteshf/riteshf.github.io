@@ -1,114 +1,91 @@
 import { Head } from "$fresh/runtime.ts";
-import { Handlers, PageProps } from "$fresh/server.ts";
-import { CSS } from "$gfm";
 
-import GithubBioCard from "@/components/GithubBioCard.tsx";
-import SocialInfoCard from "@/components/SocialInfoCard.tsx";
-import Experiences from "@/components/Experiences/Experiences.tsx";
-import Education from "@/components/Education/Education.tsx";
-import Skills from "@/components/Skills.tsx";
-import Projects from "@/components/Projects/Projects.tsx";
-import RecentProjects from "@/components/RecentProjects/RecentProjects.tsx";
+import Sidebar from "@/components/Sidebar.tsx";
+import About from "@/components/About.tsx";
+import Experience from "@/components/Experience.tsx";
+import Projects from "@/components/Projects.tsx";
+import Contact from "@/components/Contact.tsx";
 
-import {
-  getGithubUser,
-  getRecentProjects,
-  Github,
-  ProjectResponse,
-} from "@/utils/github.ts";
 import profile from "@/profile.json" with { type: "json" };
 
-interface HomePage extends Github {
-  projects: ProjectResponse;
-}
+const PAGE_TITLE = `${profile.name} — ${profile.headline} ${profile.tagline}`;
+const PAGE_DESC = profile.about[0];
 
-export const handler: Handlers<HomePage> = {
-  async GET(_req, ctx) {
-    const [user, projects] = await Promise.all([
-      getGithubUser(profile.github),
-      getRecentProjects(profile.github),
-    ]);
-    return ctx.render({ ...user, projects });
-  },
-};
-
-export default function Page({ data }: PageProps<HomePage>) {
-  if (!data) {
-    return <h1>User: {profile.github} not found</h1>;
-  }
-
-  const pageTitle = `${data.name || profile.title} — ${profile.tagline}`;
-
+export default function Page() {
   return (
     <>
       <Head>
-        <title>{pageTitle}</title>
-        <meta name="description" content={profile.summary} />
-        <meta name="author" content={data.name || profile.title} />
+        <title>{PAGE_TITLE}</title>
+        <meta name="description" content={PAGE_DESC} />
+        <meta name="author" content={profile.name} />
         <link rel="canonical" href={profile.website} />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={profile.summary} />
-        <meta property="og:image" content={data.avatar_url} />
+        <meta property="og:title" content={PAGE_TITLE} />
+        <meta property="og:description" content={PAGE_DESC} />
+        <meta property="og:image" content={profile.avatar} />
         <meta property="og:url" content={profile.website} />
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content={pageTitle} />
-        <meta name="twitter:description" content={profile.summary} />
-        <style dangerouslySetInnerHTML={{ __html: CSS }} />
+        <meta name="twitter:title" content={PAGE_TITLE} />
+        <meta name="twitter:description" content={PAGE_DESC} />
+        <link
+          rel="preconnect"
+          href="https://fonts.googleapis.com"
+        />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin=""
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+          rel="stylesheet"
+        />
         <meta
           name="google-site-verification"
           content="BBtnEWW-NzqBZtR7EfTb1C5aw41RsghkZR2yeYFtT2I"
         />
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+              html { scroll-behavior: smooth; }
+              body { background: #0a192f; }
+              ::selection { background: rgba(100,255,218,0.3); color: #ccd6f6; }
+            `,
+          }}
+        />
       </Head>
-      <main class="min-h-screen bg-ink-50 text-ink-900">
-        <div class="max-w-6xl mx-auto px-4 lg:px-8 py-8 lg:py-12 flex flex-col gap-6">
-          {/* Hero row: bio + social info */}
-          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div class="lg:col-span-2">
-              <GithubBioCard
-                {...data}
-                tagline={profile.tagline}
-                summary={profile.summary}
-              />
-            </div>
-            <SocialInfoCard {...data} {...profile} />
-          </div>
-
-          {/* Tech stack — full width */}
-          <Skills skills={profile.skills} />
-
-          {/* Selected projects */}
-          <Projects projects={profile.projects} />
-
-          {/* Experience + education */}
-          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div class="lg:col-span-2">
-              <Experiences experiences={profile.experiences} />
-            </div>
-            <Education education={profile.education} />
-          </div>
-
-          {/* Public GitHub repos — supplementary */}
-          <RecentProjects
-            username={profile.github}
-            total={data.projects.total_count}
-            projects={data.projects.items}
+      <main class="min-h-screen bg-navy text-slate font-sans">
+        <div class="max-w-screen-xl mx-auto px-6 sm:px-12 lg:px-24 lg:flex lg:gap-16">
+          <Sidebar
+            name={profile.name}
+            headline={profile.headline}
+            tagline={profile.tagline}
+            github={profile.github}
+            linkedin={profile.linkedin}
+            email={profile.email}
+            location={profile.location}
           />
 
-          <footer class="mt-4 pt-6 border-t border-ink-200 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-ink-500">
-            <span>© {new Date().getFullYear()} {data.name || profile.title}</span>
-            <span>
-              Built with Deno Fresh ·{" "}
-              <a
-                href={`https://github.com/${profile.github}/riteshf.github.io`}
-                class="hover:text-accent-700 underline"
-                target="_blank"
-                rel="noreferrer"
-              >
-                source
-              </a>
-            </span>
-          </footer>
+          <div class="lg:w-1/2 lg:py-24 pt-4 pb-24">
+            <About paragraphs={profile.about} currently={profile.currently} />
+            <Experience experiences={profile.experiences} />
+            <Projects projects={profile.projects} />
+            <Contact email={profile.email} />
+
+            <footer class="mt-12 text-xs text-slate-dark font-mono">
+              <p>
+                Designed and built by {profile.name}. · Deno Fresh ·{" "}
+                <a
+                  href={`https://github.com/${profile.github}/riteshf.github.io`}
+                  class="hover:text-accent transition-colors"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  source
+                </a>
+              </p>
+            </footer>
+          </div>
         </div>
       </main>
     </>
